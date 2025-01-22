@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Quiz de religiosidade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1 {
+            color: #0056b3;
+        }
+
+        .quiz-page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .quiz-page.active {
+            display: block;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #003f88;
+        }
+
+        button:active {
+            background-color: #002a5e;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #0056b3;
+            background-color: #e0f4ff;
+            border-radius: 10px;
+            display: none;
+        }
+
+        #result h2 {
+            color: #0056b3;
+        }
+
+        .validation-error {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .logo{
+            position: absolute;
+            height: 80px;
+            top: 2%;
+            left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Quiz de psicologia</h1>
+        <img class="logo" src="LOGO K DOURADA.png" alt="">
+
+        <div id="quiz">
+              <!-- Página 1 -->
+              <div class="quiz-page active" id="page-1">
+                <div class="question">
+                    <h3>1. Costumo acreditar que meu sucesso é resultado de sorte ou circunstâncias externas, e não de meu próprio esforço</h3>
+                    <label><input type="radio" name="q1" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q1" value="4">  Concordo parcialmente</label>
+                    <label><input type="radio" name="q1" value="3">  Neutro</label>
+                    <label><input type="radio" name="q1" value="2">  Discordo parcialmente</label>
+                    <label><input type="radio" name="q1" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>2. Quando recebo elogios pelo meu trabalho, sinto que não os mereço.</h3>
+                    <label><input type="radio" name="q2" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q2" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q2" value="3"> Neutro</label>
+                    <label><input type="radio" name="q2" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q2" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>3. Sempre sinto que poderia ter feito melhor, mesmo quando recebo feedback positivo</h3>
+                    <label><input type="radio" name="q3" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q3" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q3" value="3"> Neutro</label>
+                    <label><input type="radio" name="q3" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q3" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>4. Às vezes, me preocupo que as pessoas descubram que eu "não sou tão boa quanto pareço ser"</h3>
+                    <label><input type="radio" name="q4" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q4" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q4" value="3"> Neutro</label>
+                    <label><input type="radio" name="q4" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q4" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>5. Sinto que preciso trabalhar duas vezes mais do que os outros para ser levada a sério</h3>
+                    <label><input type="radio" name="q5" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q5" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q5" value="3"> Neutro</label>
+                    <label><input type="radio" name="q5" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q5" value="1"> Discordo totalmente</label>
+                </div>
+                <button class="btn-next" onclick="nextPage(1)">Próxima</button>
+            </div>
+
+            <!-- Página 2 -->
+            <div class="quiz-page" id="page-2">
+                <div class="question">
+                    <h3>6. Tenho dificuldade em aceitar erros e os vejo como sinais de incompetência</h3>
+                    <label><input type="radio" name="q6" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q6" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q6" value="3"> Neutro</label>
+                    <label><input type="radio" name="q6" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q6" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>7. Evito começar projetos ou tarefas até sentir que sei tudo o que é necessário</h3>
+                    <label><input type="radio" name="q7" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q7" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q7" value="3"> Neutro</label>
+                    <label><input type="radio" name="q7" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q7" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>8. Me sinto constantemente pressionada a atingir padrões extremamente altos</h3>
+                    <label><input type="radio" name="q8" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q8" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q8" value="3"> Neutro</label>
+                    <label><input type="radio" name="q8" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q8" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>9. Quando algo não sai perfeito, questiono minha capacidade</h3>
+                    <label><input type="radio" name="q9" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q9" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q9" value="3"> Neutro</label>
+                    <label><input type="radio" name="q9" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q9" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>10. Tenho dificuldade em aceitar que não sou especialista em tudo</h3>
+                    <label><input type="radio" name="q10" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q10" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q10" value="3"> Neutro</label>
+                    <label><input type="radio" name="q10" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q10" value="1"> Discordo totalmente</label>
+                </div>
+                
+                <button class="btn-next" onclick="nextPage(2)">Próxima</button>
+            </div>
+
+            <!-- Página 3 -->
+            <div class="quiz-page" id="page-3">
+                <div class="question">
+                    <h3>11. Costumo me comparar com colegas e achar que estou em desvantagem</h3>
+                    <label><input type="radio" name="q11" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q11" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q11" value="3"> Neutro</label>
+                    <label><input type="radio" name="q11" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q11" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>12. Acredito que os outros são mais qualificados ou mais inteligentes do que eu</h3>
+                    <label><input type="radio" name="q12" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q12" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q12" value="3"> Neutro</label>
+                    <label><input type="radio" name="q12" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q12" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>13. Sinto que sou a única que "não sabe o que está fazendo" em situações de trabalho</h3>
+                    <label><input type="radio" name="q13" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q13" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q13" value="3"> Neutro</label>
+                    <label><input type="radio" name="q13" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q13" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>14. Acho difícil reconhecer minhas conquistas, mesmo quando outras pessoas as reconhecem</h3>
+                    <label><input type="radio" name="q14" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q14" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q14" value="3"> Neutro</label>
+                    <label><input type="radio" name="q14" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q14" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>15. Quando algo dá certo, penso que foi "sorte" e não minha habilidade</h3>
+                    <label><input type="radio" name="q15" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q15" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q15" value="3"> Neutro</label>
+                    <label><input type="radio" name="q15" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q15" value="1"> Discordo totalmente</label>
+                </div>
+    
+                <button class="btn-next" onclick="nextPage(3)">Próxima</button>
+            </div>
+
+            <!-- Página 4 -->
+            <div class="quiz-page" id="page-4">
+                <div class="question">
+                    <h3>16. Você se orienta pelos seus valores e objetivos?</h3>
+                    <label><input type="radio" name="q16" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q16" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q16" value="3"> Neutro</label>
+                    <label><input type="radio" name="q16" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q16" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>17. Me preocupo com o que os outros pensam de mim em excesso</h3>
+                    <label><input type="radio" name="q17" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q17" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q17" value="3"> Neutro</label>
+                    <label><input type="radio" name="q17" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q17" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>18. Recuso elogios ou tento minimizá-los</h3>
+                    <label><input type="radio" name="q18" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q18" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q18" value="3"> Neutro</label>
+                    <label><input type="radio" name="q18" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q18" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>19. Tenho dificuldade em celebrar minhas conquistas</h3>
+                    <label><input type="radio" name="q19" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q19" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q19" value="3"> Neutro</label>
+                    <label><input type="radio" name="q19" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q19" value="1"> Discordo totalmente</label>
+                </div>
+                <div class="question">
+                    <h3>20. Frequentemente questiono se mereço minha posição atual ou oportunidades que recebo</h3>
+                    <label><input type="radio" name="q20" value="5"> Concordo totalmente</label>
+                    <label><input type="radio" name="q20" value="4"> Concordo parcialmente</label>
+                    <label><input type="radio" name="q20" value="3"> Neutro</label>
+                    <label><input type="radio" name="q20" value="2"> Discordo parcialmente</label>
+                    <label><input type="radio" name="q20" value="1"> Discordo totalmente</label>
+                </div>
+    
+                <button class="btn-finish" onclick="finishQuiz()">Finalizar</button>
+            </div>
+        </div>
+
+        <!-- Resultado -->
+        <div id="result">
+            <h2>Resultado</h2>
+            <p id="final-score"></p>
+            <button class="btn-next" onclick="goToAnotherPage()">Ir para outra página</button>
+        </div>
+    </main>
+
+    <script>
+        const totalPages = 4;
+
+        function nextPage(page) {
+            const current = document.getElementById(`page-${page}`);
+            const next = document.getElementById(`page-${page + 1}`);
+
+            if (validatePage(page)) {
+                current.classList.remove('active');
+                if (next) next.classList.add('active');
+            } else {
+                showValidationError(current);
+            }
+        }
+
+        function validatePage(page) {
+            const inputs = document.querySelectorAll(`#page-${page} input[type='radio']`);
+            const grouped = {};
+
+            inputs.forEach(input => {
+                grouped[input.name] = grouped[input.name] || [];
+                grouped[input.name].push(input.checked);
+            });
+
+            return Object.values(grouped).every(group => group.includes(true));
+        }
+
+        function showValidationError(pageElement) {
+            if (!pageElement.querySelector('.validation-error')) {
+                const errorMsg = document.createElement('p');
+                errorMsg.textContent = 'Por favor, responda todas as perguntas antes de continuar.';
+                errorMsg.classList.add('validation-error');
+                pageElement.appendChild(errorMsg);
+            }
+        }
+
+        function finishQuiz() {
+    if (!validatePage(totalPages)) {
+        alert('Por favor, responda todas as perguntas antes de continuar.');
+        return;
+    }
+
+    let score = 0;
+    const inputs = document.querySelectorAll(`#quiz input[type='radio']:checked`);
+    inputs.forEach(input => {
+        score += parseInt(input.value, 10);
+    });
+
+    document.getElementById('quiz').style.display = 'none';
+    const resultDiv = document.getElementById('result');
+    resultDiv.style.display = 'block';
+
+    // Lógica para exibir mensagens personalizadas
+    const finalScoreElement = document.getElementById('final-score');
+    if (score >= 60 && score <= 100) {
+        finalScoreElement.textContent = "Agudo – A síndrome da impostora está significativamente presente, e você pode estar se limitando por conta dessas crenças disfuncionais.";
+    } else if (score >= 40 && score <= 59) {
+        finalScoreElement.textContent = " Moderado – Os sintomas estão presentes de forma mais evidente e podem estar impactando sua autoconfiança e decisões.";
+    } else if (score >= 20 && score <= 39) {
+        finalScoreElement.textContent = " Leve – Você pode apresentar alguns traços da síndrome da impostora, mas eles têm impacto limitado na sua vida.";
+    } else {
+        finalScoreElement.textContent = "Isso aqui não era pra aparecer :( por favor reporte ao criador se isso aparecer.";
+    }
+
+    const finalScoreElement2 = document.getElementById('final-score');
+    if (score >= 60 && score <= 100) {
+        finalScoreElement.textContent = "Agudo – Considere um acompanhamento psicológico ou coaching para ressignificar essas crenças e fortalecer sua autoconfiança.";
+    } else if (score >= 40 && score <= 59) {
+        finalScoreElement.textContent = " Moderado – Busque suporte, como um mentor, terapia ou grupos de apoio, para trabalhar na aceitação das suas realizações";
+    } else if (score >= 20 && score <= 39) {
+        finalScoreElement.textContent = " Leve – Pratique o autoconhecimento e reflita sobre suas conquistas. Reconheça que erros fazem parte do aprendizado";
+    } else {
+        finalScoreElement.textContent = "Isso aqui não era pra aparecer :( por favor reporte ao criador se isso aparecer.";
+    }
+
+}
+
+
+        function goToAnotherPage() {
+            window.location.href = 'https://keilacalilpsi.hotmart.host/decida-sentir-a-chave-para-a-autolideranca-c2953194-10d5-44f9-a3e2-5e636f7e37d7';
+        }
+    </script>
+</body>
+</html>
